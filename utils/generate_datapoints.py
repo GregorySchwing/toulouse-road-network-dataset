@@ -96,7 +96,7 @@ def to_y_idx(y):
     return int((y - GLOBAL_Y_MIN) / STEP)
 
 
-def get_possible_lines(bin):
+def get_possible_lines(bin, bins_dict):
     r"""
     Get all possible roads for this point (i.e. all roads from the 3x3 bins surrounding the current bin)
     
@@ -763,7 +763,7 @@ def main_generate_datapoints():
             this_bin = Bin(cx_idx, cy_idx)
             
             # get all lines that could possibly intersect the current square from the bin where this data point lies
-            lines = get_possible_lines(this_bin)
+            lines = get_possible_lines(this_bin, bins_dict)
             
             # get only lines in this square, and handle lines intersecting the borders
             valid_lines, valid_id_roads = get_valid_lines(lines, this_square)
